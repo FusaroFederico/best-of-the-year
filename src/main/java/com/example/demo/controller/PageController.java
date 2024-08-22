@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -46,6 +47,37 @@ public class PageController {
 		
 		model.addAttribute("list", bestSongs);
 		return "titles";
+	}
+	
+	// 
+	@GetMapping("/movies/{id}")
+	public String movieDetails(Model model, @PathVariable("id") Integer movieId) {
+		model.addAttribute("title", "Movie Details");
+		String movieTitle = null;
+		
+		for ( Movie movie : getBestMovies()) {
+			if (movieId.equals(movie.getId())) {
+				movieTitle = movie.getTitle();
+				break;
+			}
+		}
+		model.addAttribute("name", movieTitle);
+		return "details";
+	}
+	
+	@GetMapping("/songs/{id}")
+	public String songDetails(Model model, @PathVariable("id") Integer songId) {
+		model.addAttribute("title", "Song Details");
+		String songTitle = null;
+		
+		for ( Song song : getBestSongs()) {
+			if (songId.equals(song.getId())) {
+				songTitle = song.getTitle();
+				break;
+			}
+		}
+		model.addAttribute("name", songTitle);
+		return "details";
 	}
 	
 	private List<Movie> getBestMovies(){
