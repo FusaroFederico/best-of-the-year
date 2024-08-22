@@ -11,9 +11,30 @@
 		<title>[[${title}]]</title>
 	</head>
 	<body>
-		<div>
-			<h1 th:text="'List of my ' + ${title}"></h1>
-			<p th:text="${list}"></p>
+		<div class="container m-5">
+			<div class="col-8 mx-auto border border-black">
+					<div class="row mx-auto border-bottom border-black">
+						<div class="col-3 border-end border-black d-flex align-items-center px-4">
+							<span class="fs-5 fw-medium align-top">Best of</span>
+						</div>
+						<div class="col-9 p-3 d-flex">
+							<a role="button" class="btn btn-light border border-dark p-1 px-3 me-2 active" href="/movies">Movies</a>
+							<a role="button" class="btn btn-light border border-dark p-1 px-3" href="/songs">Songs</a>
+							<a role="button" class="btn btn-light border border-dark ms-auto" href="/">Home</a>
+						</div>
+					</div>
+					<div class="p-5 text-center d-flex flex-column">
+						<h1 th:text="${title}" class="fs-3 mb-3"></h1>
+						<div class="card border border-dark mb-4 col-8 mx-auto">
+							  <ul class="list-group list-group-flush" th:if="${moviesList.size() > 0}">
+									<li th:each="movie : ${moviesList}" class="list-group-item border border-dark-subtle">
+										<a  class="text-decoration-none text-black" th:text="${movie.getTitle()}" 
+										th:href="@{/movies/{id}(id=${moviesList.indexOf(movie)})}"></a>
+									</li>
+							  </ul>
+						</div>
+					</div>
+			</div>
 		</div>
 	</body>
 </html>
