@@ -22,6 +22,32 @@ public class PageController {
 		return "homepage";
 	}
 	
+	@GetMapping("/movies")
+	public String movieTitles(Model model) {
+		model.addAttribute("title", "Best Movies");
+		String bestMovies = "";
+		
+		for ( Movie movie : getBestMovies()) {
+			bestMovies += movie.getTitle() + " - ";
+		}
+		model.addAttribute("list", bestMovies);
+		return "titles";
+	}
+	
+	@GetMapping("/songs")
+	public String songTitles(Model model) {
+		model.addAttribute("title", "Best Songs");
+		
+		String bestSongs = "";
+		
+		for ( Song song : getBestSongs()) {
+			bestSongs += song.getTitle() + " - ";
+		}
+		
+		model.addAttribute("list", bestSongs);
+		return "titles";
+	}
+	
 	private List<Movie> getBestMovies(){
 		List<Movie> movies = new ArrayList<Movie>();
 		movies.add(new Movie(0, "Il Signore Degli Anelli"));
