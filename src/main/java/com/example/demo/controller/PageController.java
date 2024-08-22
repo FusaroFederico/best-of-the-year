@@ -18,20 +18,17 @@ import com.example.demo.model.Song;
 public class PageController {
 	
 	@GetMapping("/")
-	public String greeting(@RequestParam(name = "name") String name, Model model) {
-		model.addAttribute("name", name);
+	public String greeting(Model model) {
+		model.addAttribute("name", "Pippo");
 		return "homepage";
 	}
 	
 	@GetMapping("/movies")
 	public String movieTitles(Model model) {
 		model.addAttribute("title", "Best Movies");
-		String bestMovies = "";
 		
-		for ( Movie movie : getBestMovies()) {
-			bestMovies += movie.getTitle() + " - ";
-		}
-		model.addAttribute("list", bestMovies);
+		List<Movie> moviesList = getBestMovies();
+		model.addAttribute("moviesList", moviesList);
 		return "titles";
 	}
 	
