@@ -11,8 +11,24 @@
 		<title>Homepage</title>
 	</head>
 	<body>
-		<div>
-			<h1 th:text="'Best of the year by ' + ${name}"></h1>
+		<div class="container m-5">
+			<div class="col-8 mx-auto border border-black">
+			<div class="row mx-auto border-bottom border-black">
+				<div class="col-3 border-end border-black d-flex align-items-center px-4">
+					<span class="fs-5 fw-medium align-top">Best of</span>
+				</div>
+				<div class="col-9 p-3 d-flex">
+					<button type="button" class="btn btn-light border border-dark p-1 px-3 me-2">Movies</button>
+					<button type="button" class="btn btn-light border border-dark p-1 px-3">Songs</button>
+					<button type="button" class="btn btn-light border border-dark ms-auto">Home</button>
+				</div>
+			</div>
+			<div class="p-5 text-center d-flex flex-column">
+				<h1 th:text="'Best of the year by ' + ${name}" class="fs-3 mb-3"></h1>
+				<div class="bg-warning-subtle p-5 border border-warning-subtle col-8 mx-auto">Image</div>
+				<div class="p-5 border border-black mb-4 col-8 mx-auto">lorem ipsum</div>
+			</div>
+			</div>
 		</div>
 	</body>
 </html>
