@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<th:block th:fragment="head">
+			<!-- Required meta tags -->
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			
+			<!-- Bootstrap CSS -->
+			<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}"/>
+			
+			<title>[[${title}]]</title>
+		</th:block>
+	</head>
+	<body>
+		
+		<header th:fragment="header" class="container">
+			<nav class="navbar navbar-expand-lg bg-primary-subtle">
+			  <div class="container-fluid">
+			    <a class="navbar-brand" href="#">Best of the year</a>
+			    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			      <span class="navbar-toggler-icon"></span>
+			    </button>
+			    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			      <div class="navbar-nav gap-3">
+			        <a role="button" class="btn btn-outline-primary nav-link" th:classappend="${route == 'home' ? 'active' : 'inactive'}" href="/">Home</a>
+			        <a role="button" class="btn btn-outline-primary nav-link" th:classappend="${route == 'movies' ? 'active' : 'inactive'}" href="/movies">Movies</a>
+			        <a role="button" class="btn btn-outline-primary nav-link" th:classappend="${route == 'songs' ? 'active' : 'inactive'}" href="/songs">Songs</a>
+			      </div>
+			    </div>
+			  </div>
+			</nav>
+		</header>
+		
+		<th:block th:fragment="scripts">
+			<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+		</th:block>
+	</body>
+</html>
