@@ -1,34 +1,21 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<!-- Required meta tags -->
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		<!-- Bootstrap CSS -->
-		<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}"/>
-		
-		<title>Homepage</title>
+	<head th:insert="~{fragments :: head}">
 	</head>
 	<body>
-		<div class="container m-5">
-			<div class="col-8 mx-auto border border-black">
-			<div class="row mx-auto border-bottom border-black">
-				<div class="col-3 border-end border-black d-flex align-items-center px-4">
-					<span class="fs-5 fw-medium align-top">Best of</span>
+		<header th:replace="~{fragments :: header}">
+		</header>
+		<main>
+			<div class="container m-5 mx-auto">
+				<div class="col-8 mx-auto border border-black">
+					<div class="p-5 text-center d-flex flex-column">
+						<h1 th:text="'Best of the year by ' + ${name}" class="fs-3 mb-3"></h1>
+						<div class="bg-warning-subtle p-5 border border-warning-subtle col-8 mx-auto">Image</div>
+						<div class="p-5 border border-black mb-4 col-8 mx-auto">lorem ipsum</div>
+					</div>
 				</div>
-				<div class="col-9 p-3 d-flex">
-					<a role="button" class="btn btn-light border border-dark p-1 px-3 me-2" href="/movies">Movies</a>
-					<a role="button" class="btn btn-light border border-dark p-1 px-3" href="/songs">Songs</a>
-					<a role="button" class="btn btn-light border border-dark ms-auto" href="/">Home</a>
-				</div>
 			</div>
-			<div class="p-5 text-center d-flex flex-column">
-				<h1 th:text="'Best of the year by ' + ${name}" class="fs-3 mb-3"></h1>
-				<div class="bg-warning-subtle p-5 border border-warning-subtle col-8 mx-auto">Image</div>
-				<div class="p-5 border border-black mb-4 col-8 mx-auto">lorem ipsum</div>
-			</div>
-			</div>
-		</div>
+		</main>
+		<div th:replace="~{fragments :: scripts}"></div>
 	</body>
 </html>
