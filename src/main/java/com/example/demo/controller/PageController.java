@@ -20,29 +20,25 @@ public class PageController {
 	@GetMapping("/")
 	public String greeting(Model model) {
 		model.addAttribute("name", "Pippo");
+		model.addAttribute("title", "Homepage");
+		model.addAttribute("route", "home");
 		return "homepage";
 	}
 	
 	@GetMapping("/movies")
 	public String movieTitles(Model model) {
 		model.addAttribute("title", "Best Movies");
-		
+		model.addAttribute("route", "movies");
 		List<Movie> moviesList = getBestMovies();
-		model.addAttribute("moviesList", moviesList);
+		model.addAttribute("list", moviesList);
 		return "titles";
 	}
 	
 	@GetMapping("/songs")
 	public String songTitles(Model model) {
 		model.addAttribute("title", "Best Songs");
-		
-		String bestSongs = "";
-		
-		for ( Song song : getBestSongs()) {
-			bestSongs += song.getTitle() + " - ";
-		}
-		
-		model.addAttribute("list", bestSongs);
+		model.addAttribute("route", "songs");
+		model.addAttribute("list", getBestSongs());
 		return "titles";
 	}
 	
